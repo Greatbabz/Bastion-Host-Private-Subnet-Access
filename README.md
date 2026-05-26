@@ -77,6 +77,8 @@ ssh -i bastion-key.pem ec2-user@10.0.10.xxx
 hostname
 whoami
 
+---
+
 ## Screenshots
 
 | Screenshot | Description |
