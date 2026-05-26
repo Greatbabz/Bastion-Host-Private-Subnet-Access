@@ -81,10 +81,10 @@ whoami
 
 | Screenshot | Description |
 |------------|-------------|
-| 01-instances-running | Bastion has public IP, Private has NO public IP |
-| 02-ssh-to-bastion | Successfully connected to Bastion Host |
-| 03-ssh-hop-to-private | SSH from Bastion into private instance |
-| 04-instances-terminated | Cleanup - both instances terminated |
+| [01-instances-running.png](screenshots/01-instances-running.png) | Bastion has public IP, Private has NO public IP |
+| [02-ssh-to-bastion.png](screenshots/02-ssh-to-bastion.png) | Successfully connected to Bastion Host |
+| [03-ssh-hop-to-private.png](screenshots/03-ssh-hop-to-private.png) | SSH from Bastion into private instance |
+| [04-instances-terminated.png](screenshots/04-instances-terminated.png) | Cleanup - both instances terminated |
 
 ## Key Takeaways
 
