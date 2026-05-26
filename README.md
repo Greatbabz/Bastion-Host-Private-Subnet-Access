@@ -17,13 +17,13 @@ Launch an EC2 bastion host in a public subnet, SSH into it, and from there conne
      │ PuTTY → SSH to Bastion (Public IP)
      │ using bastion-key.ppk
      ▼
-[Bastion-Host] (10.0.1.xxx) - Public Subnet ✅
+[Bastion-Host] (10.0.1.xxx) - Public Subnet 
      │
      │ ssh -i bastion-key.pem → 10.0.10.xxx
      ▼
-[Private-App-Server] (10.0.10.xxx) - Private Subnet ✅
+[Private-App-Server] (10.0.10.xxx) - Private Subnet
      │
-     │ NO PUBLIC IP - Cannot be reached directly from internet 🔒
+     │ NO PUBLIC IP - Cannot be reached directly from internet
 
 ## What I Did
 
@@ -95,7 +95,7 @@ whoami
 
 ## Portfolio Post
 
-Bastion host pattern in practice ✅
+Bastion host pattern in practice
 
 SSH → Bastion (public subnet) → Private instance (no public IP)
 
@@ -105,9 +105,9 @@ Zero direct internet access to private resources. This is how production systems
 
 ## Cleanup Confirmation
 
-✅ Bastion-Host: Terminated
-✅ Private-App-Server: Terminated
-✅ No active EC2 instances remaining
+Bastion-Host: Terminated
+Private-App-Server: Terminated
+No active EC2 instances remaining
 
 ## Author
 
