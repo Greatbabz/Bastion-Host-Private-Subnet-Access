@@ -17,13 +17,13 @@ Launch an EC2 bastion host in a public subnet, SSH into it, and from there conne
      │ PuTTY → SSH to Bastion (Public IP)
      │ using bastion-key.ppk
      ▼
-[Bastion-Host] (10.0.1.xxx) - Public Subnet 
+[Bastion-Host] (10.0.1.xxx) - Public Subnet ✅
      │
      │ ssh -i bastion-key.pem → 10.0.10.xxx
      ▼
-[Private-App-Server] (10.0.10.xxx) - Private Subnet 
+[Private-App-Server] (10.0.10.xxx) - Private Subnet ✅
      │
-     │ NO PUBLIC IP - Cannot be reached directly from internet 
+     │ NO PUBLIC IP - Cannot be reached directly from internet 🔒
 
 ## What I Did
 
@@ -80,22 +80,22 @@ whoami
 
 | Screenshot | Description |
 |------------|-------------|
-| 01-instances-running.png | Bastion has public IP, Private has NO public IP |
-| 02-ssh-to-bastion.png | Successfully connected to Bastion Host |
-| 03-ssh-hop-to-private.png | SSH from Bastion into private instance |
-| 04-instances-terminated.png | Cleanup - both instances terminated |
+| ![01-instances-running](screenshots/01-instances-running.png) | Bastion has public IP, Private has NO public IP |
+| ![02-ssh-to-bastion](screenshots/02-ssh-to-bastion.png) | Successfully connected to Bastion Host |
+| ![03-ssh-hop-to-private](screenshots/03-ssh-hop-to-private.png) | SSH from Bastion into private instance |
+| ![04-instances-terminated](screenshots/04-instances-terminated.png) | Cleanup - both instances terminated |
 
 ## Key Takeaways
 
-- Bastion pattern = Single entry point to private subnets
-- Security Groups reference other SGs - More secure than IP-based rules
-- Same key pair needed for the hop
-- Private instances = NO public IPs - Completely isolated from internet
-- Cleanup is professional - Always terminate lab resources
+- **Bastion pattern** = Single entry point to private subnets
+- **Security Groups reference other SGs** - More secure than IP-based rules
+- **Same key pair** needed for the hop
+- **Private instances = NO public IPs** - Completely isolated from internet
+- **Cleanup is professional** - Always terminate lab resources
 
 ## Portfolio Post
 
-Bastion host pattern in practice 
+Bastion host pattern in practice ✅
 
 SSH → Bastion (public subnet) → Private instance (no public IP)
 
@@ -105,9 +105,9 @@ Zero direct internet access to private resources. This is how production systems
 
 ## Cleanup Confirmation
 
-Bastion-Host: Terminated
-Private-App-Server: Terminated
-No active EC2 instances remaining
+✅ Bastion-Host: Terminated
+✅ Private-App-Server: Terminated
+✅ No active EC2 instances remaining
 
 ## Author
 
