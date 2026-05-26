@@ -60,16 +60,20 @@ Launch an EC2 bastion host in a public subnet, SSH into it, and from there conne
 
 ## Verification Commands
 
-### On Local Machine (Copy key to Bastion)On Bastion Host (Set permissions and connect)
+### On Local Machine (Copy key to Bastion)
 
 ```bash
 pscp -i bastion-key.ppk bastion-key.pem ec2-user@[BASTION-PUBLIC-IP]:/home/ec2-user/
 
-**On Bastion Host (Set permissions and connect)**
+### On Bastion Host (Set permissions and connect)
+
+```bash
 chmod 400 bastion-key.pem
 ssh -i bastion-key.pem ec2-user@10.0.10.xxx
 
-**On Private Instance (Verify)**
+### On Private Instance (Verify)
+
+```bash
 hostname
 whoami
 
@@ -77,10 +81,10 @@ whoami
 
 | Screenshot | Description |
 |------------|-------------|
-| Instances Running | Bastion has public IP, Private has NO public IP |
-| SSH to Bastion | Successfully connected to Bastion Host |
-| SSH Hop to Private | SSH from Bastion into private instance |
-| Instances Terminated | Cleanup - both instances terminated |
+| 01-instances-running | Bastion has public IP, Private has NO public IP |
+| 02-ssh-to-bastion | Successfully connected to Bastion Host |
+| 03-ssh-hop-to-private | SSH from Bastion into private instance |
+| 04-instances-terminated | Cleanup - both instances terminated |
 
 ## Key Takeaways
 
