@@ -11,18 +11,19 @@ Launch an EC2 bastion host in a public subnet, SSH into it, and from there conne
 ## Architecture Overview
 
 ### Connection Chain
+
 [Your Windows PC]
-│
-│ PuTTY → SSH to Bastion (Public IP)
-│ using bastion-key.ppk
-▼
+     │
+     │ PuTTY → SSH to Bastion (Public IP)
+     │ using bastion-key.ppk
+     ▼
 [Bastion-Host] (10.0.1.xxx) - Public Subnet ✅
-│
-│ ssh -i bastion-key.pem → 10.0.10.xxx
-▼
+     │
+     │ ssh -i bastion-key.pem → 10.0.10.xxx
+     ▼
 [Private-App-Server] (10.0.10.xxx) - Private Subnet ✅
-│
-│ NO PUBLIC IP - Cannot be reached directly from internet 🔒
+     │
+     │ NO PUBLIC IP - Cannot be reached directly from internet 🔒
 
 ## What I Did
 
@@ -74,22 +75,17 @@ whoami
 
 ## Screenshots
 
-Screenshot	Description
-Instances Running	Bastion has public IP, Private has NO public IP
-SSH to Bastion	Successfully connected to Bastion Host
-SSH Hop to Private	SSH from Bastion into private instance
-Instances Terminated	Cleanup - both instances terminated
+| Screenshot | Description |
+|------------|-------------|
+| Instances Running | Bastion has public IP, Private has NO public IP |
+| SSH to Bastion | Successfully connected to Bastion Host |
+| SSH Hop to Private | SSH from Bastion into private instance |
+| Instances Terminated | Cleanup - both instances terminated |
 
 ## Key Takeaways
 
-Bastion pattern = Single entry point to private subnets
-
-Security Groups reference other SGs - More secure than IP-based rules
-
-Same key pair needed for the hop
-
-Private instances = NO public IPs - Completely isolated from internet
-
-Cleanup is professional - Always terminate lab resources
-
-
+- **Bastion pattern** = Single entry point to private subnets
+- **Security Groups reference other SGs** - More secure than IP-based rules
+- **Same key pair** needed for the hop
+- **Private instances = NO public IPs** - Completely isolated from internet
+- **Cleanup is professional** - Always terminate lab resources
