@@ -17,13 +17,13 @@ Launch an EC2 bastion host in a public subnet, SSH into it, and from there conne
      │ PuTTY → SSH to Bastion (Public IP)
      │ using bastion-key.ppk
      ▼
-[Bastion-Host] (10.0.1.xxx) - Public Subnet ✅
+[Bastion-Host] (10.0.1.xxx) - Public Subnet 
      │
      │ ssh -i bastion-key.pem → 10.0.10.xxx
      ▼
-[Private-App-Server] (10.0.10.xxx) - Private Subnet ✅
+[Private-App-Server] (10.0.10.xxx) - Private Subnet 
      │
-     │ NO PUBLIC IP - Cannot be reached directly from internet 🔒
+     │ NO PUBLIC IP - Cannot be reached directly from internet 
 
 ## What I Did
 
@@ -60,38 +60,60 @@ Launch an EC2 bastion host in a public subnet, SSH into it, and from there conne
 
 ## Verification Commands
 
-### On Local Machine (Copy key to Bastion)
+**On Local Machine (Copy key to Bastion)**
 
-```bash
 pscp -i bastion-key.ppk bastion-key.pem ec2-user@[BASTION-PUBLIC-IP]:/home/ec2-user/
 
-### On Bastion Host (Set permissions and connect)
+**On Bastion Host (Set permissions and connect)**
 
-```bash
 chmod 400 bastion-key.pem
+
 ssh -i bastion-key.pem ec2-user@10.0.10.xxx
 
-### On Private Instance (Verify)
+**On Private Instance (Verify)**
 
-```bash
 hostname
-whoami
 
----
+whoami
 
 ## Screenshots
 
 | Screenshot | Description |
 |------------|-------------|
-| [01-instances-running.png](screenshots/01-instances-running.png) | Bastion has public IP, Private has NO public IP |
-| [02-ssh-to-bastion.png](screenshots/02-ssh-to-bastion.png) | Successfully connected to Bastion Host |
-| [03-ssh-hop-to-private.png](screenshots/03-ssh-hop-to-private.png) | SSH from Bastion into private instance |
-| [04-instances-terminated.png](screenshots/04-instances-terminated.png) | Cleanup - both instances terminated |
+| 01-instances-running.png | Bastion has public IP, Private has NO public IP |
+| 02-ssh-to-bastion.png | Successfully connected to Bastion Host |
+| 03-ssh-hop-to-private.png | SSH from Bastion into private instance |
+| 04-instances-terminated.png | Cleanup - both instances terminated |
 
 ## Key Takeaways
 
-- **Bastion pattern** = Single entry point to private subnets
-- **Security Groups reference other SGs** - More secure than IP-based rules
-- **Same key pair** needed for the hop
-- **Private instances = NO public IPs** - Completely isolated from internet
-- **Cleanup is professional** - Always terminate lab resources
+- Bastion pattern = Single entry point to private subnets
+- Security Groups reference other SGs - More secure than IP-based rules
+- Same key pair needed for the hop
+- Private instances = NO public IPs - Completely isolated from internet
+- Cleanup is professional - Always terminate lab resources
+
+## Portfolio Post
+
+Bastion host pattern in practice 
+
+SSH → Bastion (public subnet) → Private instance (no public IP)
+
+Zero direct internet access to private resources. This is how production systems are securely administered.
+
+#AWS #EC2 #CloudSecurity #BastionHost
+
+## Cleanup Confirmation
+
+Bastion-Host: Terminated
+Private-App-Server: Terminated
+No active EC2 instances remaining
+
+## Author
+
+**Oluwatoba Babalola**  
+AWS Cloud Accelerator Program
+
+---
+
+*Last Updated: May 26, 2026*
